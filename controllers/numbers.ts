@@ -1,9 +1,17 @@
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 
 export const getNumbers = (req: Request, res: Response) => {
+
+    const errors = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     const { id } = req.params;
 
-    const primeNumbers = [];
+    const sequence = [2];
     for (let i = 2; i <= parseInt(id); i++ ) {
         let isPrime;
 
@@ -17,13 +25,13 @@ export const getNumbers = (req: Request, res: Response) => {
         }
         
         if (isPrime) {
-            primeNumbers.push(i);
+            sequence.push(i);
         }
     }
 
     res.json({
         msg: 'getPrimeNumbers',
         number: id,
-        primeNumbers
+        sequence
     })
 }
