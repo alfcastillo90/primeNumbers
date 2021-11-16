@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import numberRoutes from '../routes/numbers';
+import cors from 'cors';
 
 class Server {
     private app: express.Application;
@@ -18,6 +19,10 @@ class Server {
         this.app.listen(this.port, () => {
             console.log(`Server running at port ${this.port}`)
         })
+    }
+
+    middlewares() {
+        this.app.use(cors());
     }
 
     routes() {
