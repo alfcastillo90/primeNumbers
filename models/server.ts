@@ -5,8 +5,8 @@ import cors from 'cors';
 class Server {
     private app: express.Application;
     private port: string;
-    private paths = {
-        numbers: 'ms/numbers'
+    private apiPaths = {
+        numbers: '/api/numbers'
     };
 
     constructor() {
@@ -17,7 +17,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Server running at port ${this.port}`)
+            console.log(`Server running at port ${this.port}`);
         })
     }
 
@@ -26,7 +26,7 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.paths.numbers, numberRoutes);
+        this.app.use(this.apiPaths.numbers, numberRoutes);
     }
 }
 

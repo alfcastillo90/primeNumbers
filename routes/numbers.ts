@@ -3,6 +3,6 @@ import { getNumbers } from "../controllers/numbers";
 
 const router = Router();
 
-router.get('/', getNumbers); 
+router.get('/:id', getNumbers); 
 
 export default router;
