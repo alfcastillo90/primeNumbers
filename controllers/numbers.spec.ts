@@ -1,4 +1,3 @@
-import { builtinModules } from "module";
 import { getNumbers } from "./numbers";
 
 describe('getNumbers', () => {
@@ -14,16 +13,15 @@ describe('getNumbers', () => {
             json: (body?: any) => body,
             status: (code: number) => responseParam
         };
-        const result = getNumbers(request as any, responseParam as any)
+        const result: any = getNumbers(request as any, responseParam as any);
         expect(result).toEqual({
-            "msg": "getPrimeNumbers",
-            "number": "7",
-            "sequence": [
+            number: 7,
+            sequence: [
                 2,
                 3,
                 5,
                 7
             ]
         })
-    })
+    });
 })
